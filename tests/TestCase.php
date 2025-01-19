@@ -38,5 +38,12 @@ class TestCase extends Orchestra
             $table->nullableMorphs('linkable');
             $table->timestamps();
         });
+
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->timestamps();
+        });
     }
 }

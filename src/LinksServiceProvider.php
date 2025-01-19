@@ -2,11 +2,20 @@
 
 namespace Primecorecz\Links;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Primecorecz\Links\Models\Post;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LinksServiceProvider extends PackageServiceProvider
 {
+    public function boot(): void
+    {
+        Relation::enforceMorphMap([
+            'magazine_post' => Post::class,
+        ]);
+    }
+
     public function configurePackage(Package $package): void
     {
         /*
