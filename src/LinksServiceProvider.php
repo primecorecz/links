@@ -3,6 +3,7 @@
 namespace Primecorecz\Links;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Primecorecz\Links\Models\Position;
 use Primecorecz\Links\Models\Post;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -13,6 +14,7 @@ class LinksServiceProvider extends PackageServiceProvider
     {
         Relation::enforceMorphMap([
             'magazine_post' => Post::class,
+            'iris_position' => Position::class,
         ]);
     }
 
