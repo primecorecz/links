@@ -4,7 +4,6 @@ namespace Primecorecz\Links;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Primecorecz\Links\Commands\LinksCommand;
 
 class LinksServiceProvider extends PackageServiceProvider
 {
@@ -17,9 +16,7 @@ class LinksServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('links')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_links_table')
-            ->hasCommand(LinksCommand::class);
+            ->hasConfigFile('primecore-links')
+            ->hasViews();
     }
 }
