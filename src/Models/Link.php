@@ -13,6 +13,11 @@ class Link extends Model
 
     protected $guarded = [];
 
+    public function getTable(): string
+    {
+        return config('primecore-links.db.links_table');
+    }
+
     public function casts(): array
     {
         return [
