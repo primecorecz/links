@@ -20,7 +20,7 @@ it('registers morph map', function () {
     $link->linkable()->associate($post);
     $link->save();
 
-    expect($link->linkable_type)->toBe('magazine_post');
+    expect($link->linkable_type)->toBe('post');
 });
 
 it('has related model', function () {
