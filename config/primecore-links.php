@@ -8,5 +8,6 @@ return [
         'taggables_table' => env('PRIMECORE_TAGGABLES_TABLE', 'magazine.taggables'),
         'posts_table' => env('PRIMECORE_POSTS_TABLE', 'magazine.posts'),
         'positions_table' => env('PRIMECORE_POSITIONS_TABLE', 'iris.positions'),
+        'areas_table' => env('PRIMECORE_AREAS_TABLE', 'iris.areas'),
     ],
 ];
