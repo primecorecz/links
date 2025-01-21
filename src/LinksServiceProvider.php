@@ -15,7 +15,7 @@ class LinksServiceProvider extends PackageServiceProvider
     {
         Relation::enforceMorphMap([
             'magazine_link' => Link::class,
-            'post' => Post::class, // key must be the same as in Magazine = without prefix
+            'magazine_post' => Post::class,
             'iris_position' => Position::class,
         ]);
     }
