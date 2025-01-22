@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Primecorecz\Links\Contracts\Linkable;
 
 /**
- * @property string $title
+ * @property string $name
  * @property string $slug
  */
 class Area extends Model implements Linkable
@@ -19,7 +19,7 @@ class Area extends Model implements Linkable
 
     public function linkTitle(): Attribute
     {
-        return Attribute::get(fn () => "Nabídky práce {$this->title}");
+        return Attribute::get(fn () => "Nabídky práce {$this->name}");
     }
 
     public function linkUrl(): Attribute
