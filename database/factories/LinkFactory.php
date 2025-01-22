@@ -3,7 +3,6 @@
 namespace Primecorecz\Links\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Primecorecz\Links\Enums\LinkType;
 use Primecorecz\Links\Models\Link;
 
 class LinkFactory extends Factory
@@ -13,7 +12,6 @@ class LinkFactory extends Factory
     public function definition()
     {
         return [
-            'type' => LinkType::Custom,
         ];
     }
 }

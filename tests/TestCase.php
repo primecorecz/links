@@ -32,7 +32,6 @@ class TestCase extends Orchestra
 
         Schema::create('links', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
             $table->string('title')->nullable();
             $table->string('url')->nullable();
             $table->nullableMorphs('linkable');
