@@ -12,6 +12,7 @@ use Spatie\Tags\HasTags;
 /**
  * @property string $title
  * @property string $url
+ * @property ?string $linkable_type
  */
 class Link extends Model
 {
@@ -52,5 +53,15 @@ class Link extends Model
     {
         // @phpstan-ignore property.notFound
         return Attribute::get(fn () => $this->attributes['url'] ?? $this->linkable?->linkUrl);
+    }
+
+    protected function type(): Attribute
+    {
+        return Attribute::get(fn () => match ($this->linkable_type) {
+            'magazine_post' => 'post',
+            'iris_area' => 'area',
+            'iris_position' => 'position',
+            default => 'custom',
+        });
     }
 }
