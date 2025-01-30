@@ -3,6 +3,7 @@
 namespace Primecorecz\Links\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Primecorecz\Links\Contracts\Linkable;
 
@@ -12,6 +13,8 @@ use Primecorecz\Links\Contracts\Linkable;
  */
 class Position extends Model implements Linkable
 {
+    use HasFactory;
+
     public function getTable(): string
     {
         return config('primecore-links.db.positions_table');

@@ -36,5 +36,7 @@
         <env name="DB_PORT" value="3306"/>
         <env name="PRIMECORE_LINKS_TABLE" value="links" />
         <env name="PRIMECORE_POSTS_TABLE" value="posts" />
+        <env name="PRIMECORE_POSITIONS_TABLE" value="positions" />
+        <env name="PRIMECORE_AREAS_TABLE" value="areas" />
     </php>
 </phpunit>

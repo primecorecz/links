@@ -42,6 +42,22 @@ class TestCase extends Orchestra
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->boolean('draft')->default(false);
+            $table->timestamp('published_at')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('positions', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->timestamps();
+        });
+
+        Schema::create('areas', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug');
             $table->timestamps();
         });
     }

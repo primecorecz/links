@@ -3,19 +3,17 @@
 namespace Primecorecz\Links\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Primecorecz\Links\Models\Post;
+use Primecorecz\Links\Models\Area;
 
-class PostFactory extends Factory
+class AreaFactory extends Factory
 {
-    protected $model = Post::class;
+    protected $model = Area::class;
 
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence,
+            'name' => $this->faker->sentence,
             'slug' => $this->faker->slug,
-            'draft' => false,
-            'published_at' => now()->subDay(),
         ];
     }
 }
