@@ -38,5 +38,7 @@
         <env name="PRIMECORE_POSTS_TABLE" value="posts" />
         <env name="PRIMECORE_POSITIONS_TABLE" value="positions" />
         <env name="PRIMECORE_AREAS_TABLE" value="areas" />
+        <env name="PRIMECORE_TAGS_TABLE" value="tags" />
+        <env name="PRIMECORE_TAGGABLES_TABLE" value="taggables" />
     </php>
 </phpunit>
