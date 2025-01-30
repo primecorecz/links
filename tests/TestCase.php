@@ -4,12 +4,15 @@ namespace Primecorecz\Links\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Primecorecz\Links\LinksServiceProvider;
 
 class TestCase extends Orchestra
 {
+    use InteractsWithViews;
+
     protected function setUp(): void
     {
         parent::setUp();

@@ -3,10 +3,12 @@
 namespace Primecorecz\Links;
 
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Blade;
 use Primecorecz\Links\Models\Area;
 use Primecorecz\Links\Models\Link;
 use Primecorecz\Links\Models\Position;
 use Primecorecz\Links\Models\Post;
+use Primecorecz\Links\View\Components\Links;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -20,6 +22,10 @@ class LinksServiceProvider extends PackageServiceProvider
             'iris_position' => Position::class,
             'iris_area' => Area::class,
         ]);
+
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'primecore-links-package');
+
+        Blade::component('primecore::links', Links::class);
     }
 
     public function configurePackage(Package $package): void
