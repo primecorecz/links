@@ -158,14 +158,14 @@ describe('prepareViewData', function () {
             ->has(Tag::factory()->state(['name' => 'test']))
             ->create();
 
-        $otherPost = Post::factory()->state(['slug' => 'other-post'])->create();
+        // $otherPost = Post::factory()->state(['slug' => 'other-post'])->create();
+        Post::factory()->count(3)->create();
 
         expect(Link::prepareViewData(tag: 'test')
             ->get('post')
             ->pluck('urlOrLinkableUrl')
         )->toContain(
-            $postLink->linkable->linkUrl,
-            $otherPost->linkUrl,
+            ...Post::all()->pluck('linkUrl')
         );
     });
 
