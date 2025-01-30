@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Collection;
 use Spatie\Tags\HasTags;
 
 /**
@@ -18,6 +19,10 @@ class Link extends Model
 {
     use HasFactory;
     use HasTags;
+
+    public const string TAG_TYPE = 'microsite';
+
+    public const int PER_GROUP = 4;
 
     protected $guarded = [];
 
@@ -63,5 +68,51 @@ class Link extends Model
             'iris_position' => 'position',
             default => 'custom',
         });
+    }
+
+    public static function prepareViewData(Tag|string $tag, int $linksPerGroup = 4): Collection
+    {
+        $links = static::query()
+            ->withAnyTags($tag, static::TAG_TYPE)
+            ->with('linkable')
+            ->inRandomOrder()
+            ->get()
+            ->groupBy('type')
+
+            // Add latests posts when not enough predefined posts
+            ->tap(function (Collection $collection) use ($linksPerGroup): void {
+                $predefinedPostLinks = $collection->get('post') ?? new Collection;
+
+                $latestsPostLinks = Post::query()
+                    ->isPublished()
+                    ->whereNotIn('id', $predefinedPostLinks->pluck('linkable_id'))
+                    ->orderBy('published_at', 'desc')
+                    ->limit($linksPerGroup)
+                    ->get()
+                    ->map(fn (Post $post) => new Link([
+                        'title' => $post->linkTitle,
+                        'url' => $post->linkUrl,
+                    ]));
+
+                $collection->put(
+                    'post',
+                    $predefinedPostLinks->merge($latestsPostLinks),
+                );
+            })
+
+            // Limit number of links per group
+            ->map(fn (Collection $group) => $group
+                ->take($linksPerGroup)
+            )
+
+            // Display in order
+            ->sortBy(fn ($group, $key) => match ($key) {
+                'position' => 1,
+                'area' => 2,
+                'post' => 3,
+                default => 4,
+            });
+
+        return $links;
     }
 }

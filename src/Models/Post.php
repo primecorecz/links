@@ -11,6 +11,8 @@ use Primecorecz\Links\Contracts\Linkable;
 /**
  * @property string $title
  * @property string $slug
+ * @property string $linkTitle
+ * @property string $linkUrl
  */
 class Post extends Model implements Linkable
 {
