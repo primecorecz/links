@@ -1,5 +1,5 @@
 
-@if ($linkGroups->isNotEmpty())
+@if (! empty($linkGroups))
     <div {{ $attributes->class('mx-8 mt-8 xl:mx-16 xl:mt-16') }}>
         <h2 class="mb-4 text-sm text-gray-400 font-bold">Užitečné odkazy:</h2>
         <div class="flex gap-8 flex-wrap lg:flex-nowrap lg:justify-between">

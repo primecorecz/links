@@ -4,20 +4,26 @@ namespace Primecorecz\Links\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\Component;
 use Primecorecz\Links\Models\Link;
 use Primecorecz\Links\Models\Tag;
+use Throwable;
 
 class Links extends Component
 {
-    public iterable $linkGroups;
+    public iterable $linkGroups = [];
 
     /**
      * Create a new component instance.
      */
     public function __construct(Tag|string $tag)
     {
-        $this->linkGroups = Link::prepareViewData($tag);
+        try {
+            $this->linkGroups = Link::prepareViewData($tag);
+        } catch (Throwable $th) {
+            Log::error($th);
+        }
     }
 
     /**
