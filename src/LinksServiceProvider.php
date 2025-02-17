@@ -16,7 +16,7 @@ class LinksServiceProvider extends PackageServiceProvider
 {
     public function boot(): void
     {
-        Relation::enforceMorphMap([
+        Relation::morphMap([
             'magazine_link' => Link::class,
             'magazine_post' => Post::class,
             'iris_position' => Position::class,
