@@ -31,6 +31,9 @@ class Links extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('primecore-links-package::components.links');
+        /** @var view-string */
+        $path = 'primecore-links-package::components.links';
+
+        return view($path);
     }
 }
