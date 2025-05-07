@@ -28,7 +28,7 @@ class Link extends Model
 
     public function getTable(): string
     {
-        return config('primecore-links.db.links_table');
+        return config('primecore-links.db.links_table', 'magazin.links');
     }
 
     public function linkable(): MorphTo
