@@ -1,5 +1,6 @@
 <?php
 
+
 use Primecorecz\Links\Models\Link;
 use Primecorecz\Links\Models\Position;
 use Primecorecz\Links\Models\Tag;
