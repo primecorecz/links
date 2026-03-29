@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Collection;
 use Primecorecz\Links\Models\Area;
 use Primecorecz\Links\Models\Link;
 use Primecorecz\Links\Models\Position;
@@ -58,7 +59,7 @@ it('has link type attribute', function () {
 describe('prepareViewData', function () {
 
     it('returns collection', function () {
-        expect(Link::prepareViewData(tag: 'test'))->toBeInstanceOf(\Illuminate\Support\Collection::class);
+        expect(Link::prepareViewData(tag: 'test'))->toBeInstanceOf(Collection::class);
     });
 
     it('contains tagged links', function () {
