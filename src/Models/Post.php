@@ -27,7 +27,7 @@ class Post extends Model implements Linkable
 
     public function getTable(): string
     {
-        return config('primecore-links.db.posts_table');
+        return config('primecore-links.db.posts_table', parent::getTable());
     }
 
     public function linkTitle(): Attribute

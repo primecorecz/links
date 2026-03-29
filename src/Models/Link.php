@@ -100,7 +100,6 @@ class Link extends Model
                         // Cannot merge two Eloquent collections, convert to base Collection
                         // https://laraveldaily.com/tip/merging-eloquent-collections
                         ->toBase()
-                        // @phpstan-ignore argument.type
                         ->merge($latestsPostLinks)
                 );
             })
